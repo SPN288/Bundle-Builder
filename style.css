@@ -25,10 +25,9 @@ body {
 }
 
 .product-card {
-  border: 1px solid #b50c0c;
-
-  text-align: center;
+  text-align: left;
   width: 316px;
+  margin: 2px;
 }
 
 .product-card img {
@@ -50,16 +49,39 @@ body {
   object-fit: cover;
   margin-right: 0.5rem;
 }
+.price-text{
+  color: #666666;
+}
 
 
 .toggle-btn {
   width: 100%;
-  padding: 0.75rem;
+  height: 55px;
+  padding: 16px;
   margin-top: 1rem;
-  background: #000;
-  color: #fff;
+  font-weight: 600;
+  font-size: 15;
+  line-height: 100%;
+  color: #000000;
+  text-align: left;
   border: none;
   cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+}
+.toggle-btn.added {
+  background: #ccc;       
+  color: #333;            
+  cursor: default;        
+}
+.toggle-btn:hover{
+  background-color: #000000;
+  color: #fff;
+  border-style: none;
+}
+.addbtntext{
+  display: flex;
+  justify-content: space-between;
 }
 
 .toggle-btn:disabled {
@@ -158,11 +180,12 @@ body {
 
 .progress-container {
   margin: 1rem 0;
+  
 }
 
 .progress-bar {
   width: 100%;
-  height: 10px;
+  height: 5px;
   background-color: #eee;
   border-radius: 5px;
   overflow: hidden;

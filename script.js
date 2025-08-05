@@ -22,10 +22,14 @@ function renderProducts() {
         card.innerHTML = `
       <img src="${product.image}" alt="${product.name}" />
       <h3>${product.name}</h3>
-      <p>$${product.price.toFixed(2)}</p>
-      <button class="toggle-btn" data-id="${product.id}">
-        ${isAdded ? 'Added to Bundle ✓' : 'Add to Bundle +'}
+      <p class="price-text">$${product.price.toFixed(2)}</p>
+      <button class="toggle-btn ${isAdded ? 'added' : ''}" data-id="${product.id}">
+      <div class="addbtntext">
+      <span class="label">${isAdded ? 'Added to Bundle' : 'Add to Bundle'}</span>
+      <span class="icon">${isAdded ? '✓' : '+'}</span>
+      </div>
       </button>
+
     `;
         grid.appendChild(card);
     });
@@ -35,7 +39,7 @@ function updateSidebar() {
     const container = document.getElementById('selected-products');
     const subtotalText = document.getElementById('subtotal');
     const discountText = document.getElementById('discount');
-    
+
     const ctaBtn = document.getElementById('add-to-cart');
 
     container.innerHTML = '';
@@ -64,7 +68,7 @@ function updateSidebar() {
     const discount = selected.size >= 3 ? subtotal * 0.3 : 0;
     const finalTotal = subtotal - discount;
 
-    
+
     const fill = document.getElementById('progress-fill');
     let progressPercent = Math.min(selected.size / 3, 1) * 100;
     fill.style.width = `${progressPercent}%`;
