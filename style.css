@@ -1,36 +1,177 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300");
-html,
 body {
-  height: 100%;
-  width: 100%;
+  font-family: sans-serif;
   margin: 0;
+  padding: 0;
+  background: #fff;
 }
-body {
+
+.title {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.bundle-builder {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  flex: 1;
+  gap: 48px;
+}
+
+.product-card {
+  border: 1px solid #b50c0c;
+
+  text-align: center;
+  width: 316px;
+}
+
+.product-card img {
+  width: 316px;
+  height: 326px;
+}
+
+.bundle-sidebar {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.selected-products img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 0.5rem;
+}
+
+
+.toggle-btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.cta-btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+
+
+/* Stepper + Remove UI */
+.selected-item {
+  display: flex;
   align-items: center;
-  background: linear-gradient(to right bottom, #873572, black);
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  animation: fadeIn 0.3s ease-in-out;
 }
-a {
-  display: inline-block;
-  color: lightgrey;
+
+.selected-item img {
+  width: 50px;
+  height: 50px;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+}
+
+.selected-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.stepper button {
+  background: #eee;
+  border: none;
+  padding: 4px 8px;
   font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  white-space: nowrap;
-  padding: 12px;
-  border: 1px solid white;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: all 0.15s ease-in-out;
+  cursor: pointer;
 }
 
-a:hover {
-  background: rgba(0, 0, 0, 0.23);
-  color: white;
-  transform: scale(1.03);
-  text-decoration: none;
-}
-a:active {
-  transform: scale(0.98);
+.stepper span {
+  margin: 0 8px;
 }
 
+/* Remove button */
+.remove-btn {
+  background: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Button animation */
+.toggle-btn {
+  transition: all 0.3s ease;
+}
+
+.toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.progress-container {
+  margin: 1rem 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+#progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: #000;
+  transition: width 0.3s ease;
+}

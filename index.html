@@ -2,21 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <!-- REPLACE THIS WITH YOUR PROJECT NAME. EXAMPLE - Category tabs -->
-    <title>Coding Assesment L2 boilerplate</title>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bundle Builder</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <!-- Your code goes here -->
-    <div class="container">
-        <a href="https://github.com/mmdmrishabh/Coding-assessment-l2-Boilerplate-code/blob/main/Readme.md" target="_blank">Read how to work with boilerplate</a>
-    </div>
-    <!-- Happy coding 😊 -->
-    <script src="./script.js"></script>
+
+    <h1 class="title">Buy 3 and Save 30%</h1>
+
+    <main class="bundle-builder">
+        <!-- Product Grid -->
+        <section class="product-grid">
+            <!-- JS will inject product cards here -->
+        </section>
+
+        <!-- Sidebar -->
+        <aside class="bundle-sidebar">
+            <h2>Create a Bundle</h2>
+            <div class="progress-container">
+                <p class="progress-text"><span id="bundle-count">Add at <b>least 3</b> items and <b>Save 30%</b></p></span></p>
+                <div class="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="selected-products" id="selected-products">
+                <!-- Dynamically populated -->
+            </div>
+            <div class="summary">
+                <p>Discount: <span id="discount">$0.00</span></p>
+                <p>Subtotal: <span id="subtotal">$0.00</span></p>
+            </div>
+            <button id="add-to-cart" class="cta-btn" disabled>Add Bundle to Cart</button>
+        </aside>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
