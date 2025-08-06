@@ -42,6 +42,7 @@ body {
   padding: 1rem;
   position: sticky;
   top: 1rem;
+  
 }
 
 .selected-products img {
@@ -223,4 +224,25 @@ body {
   width: 0%;
   background-color: #000;
   transition: width 0.3s ease;
+}
+/* ===== Responsive Layout for Mobile ===== */
+@media (max-width: 768px) {
+  .bundle-builder {
+    flex-direction: column;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr; /* stack vertically */
+  }
+
+  .bundle-sidebar {
+    width: 100%;
+    position: static; /* remove sticky on small screens */
+    margin-top: 2rem;
+    border-top: 1px solid #ddd;
+  }
+}
+.bundle-sidebar {
+  position: sticky;
+  top: 1rem;
 }

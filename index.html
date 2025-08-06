@@ -13,12 +13,12 @@
     <h1 class="title">Buy 3 and Save 30%</h1>
 
     <main class="bundle-builder">
-        <!-- Product Grid -->
+        
         <section class="product-grid">
-            <!-- JS will inject product cards here -->
+            
         </section>
 
-        <!-- Sidebar -->
+        
         <aside class="bundle-sidebar">
             <h2>Create a Bundle</h2>
             <div class="progress-container">
@@ -30,20 +30,25 @@
             </div>
 
             <div class="selected-products" id="selected-products">
-                <!-- Dynamically populated -->
+                
             </div>
-            <div class="summary">
-                <p class="price-text addbtntext"><span>Discount</span> <span id="discount">$0.00</span></p>
-                <p class="addbtntext"><span>Subtotal</span><span id="subtotal">$0.00</span></p>
-            </div>
-            <button id="add-to-cart" class="cta-btn" disabled>
-                <div class="btn-text">Add Bundle to Cart</div>
-                <div class="btn-icon">
-                    <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 4l6 4-6 4" stroke="currentColor" stroke-width="2" fill="none" />
-                    </svg>
+            <div class="d-container">
+
+                <div class="summary">
+                    <hr>
+                    <p class="price-text addbtntext"><span>Discount</span> <span id="discount">$0.00</span></p>
+                    <hr>
+                    <p class="addbtntext"><span>Subtotal</span><span id="subtotal">$0.00</span></p>
                 </div>
-            </button>
+                <button id="add-to-cart" class="cta-btn" disabled>
+                    <div class="btn-text">Add Bundle to Cart</div>
+                    <div class="btn-icon">
+                        <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4l6 4-6 4" stroke="currentColor" stroke-width="2" fill="none" />
+                        </svg>
+                    </div>
+                </button>
+            </div>
 
         </aside>
     </main>
