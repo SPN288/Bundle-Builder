@@ -114,10 +114,12 @@ document.addEventListener('click', (e) => {
     updateSidebar();
   }
 
-  if (e.target.id === 'add-to-cart') {
-    console.log('Bundle:', Array.from(selected.entries()));
-    alert('Bundle logged to console!');
-  }
+  const cta = e.target.closest('#add-to-cart');
+if (cta) {
+  console.log('Bundle:', Array.from(selected.entries()));
+  alert('Bundle logged to console!');
+}
+
 });
 
 renderProducts();
