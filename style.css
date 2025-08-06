@@ -27,22 +27,21 @@ body {
 .product-card {
   text-align: left;
   width: 316px;
-  margin: 2px;
 }
 
 .product-card img {
   width: 316px;
   height: 326px;
+  object-fit: cover;
 }
 
 .bundle-sidebar {
   width: 300px;
   max-height: 630px;
-  border: 2px solid #111111;
+  border: 2px solid #111;
   padding: 1rem;
   position: sticky;
   top: 1rem;
-  
 }
 
 .selected-products img {
@@ -51,47 +50,51 @@ body {
   object-fit: cover;
   margin-right: 0.5rem;
 }
-.price-text{
-  color: #666666;
+
+.price-text {
+  color: #666;
 }
 
-
+/* Toggle Add Button */
 .toggle-btn {
-  width: 100%;
-  height: 55px;
-  padding: 16px;
-  margin-top: 1rem;
-  font-weight: 600;
-  font-size: 15;
-  line-height: 100%;
-  color: #000000;
-  text-align: left;
-  border: none;
-  cursor: pointer;
-  border-style: solid;
-  border-width: 1px;
-}
-.toggle-btn.added {
-  background: #ccc;       
-  color: #333;            
-  cursor: default;        
-}
-.toggle-btn:hover{
-  background-color: #000000;
-  color: #fff;
-  border-style: none;
-}
-.addbtntext{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 55px;
+  padding: 0 16px;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 15px;
+  color: #000;
+  background: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.toggle-btn:disabled {
-  background: #aaa;
-  cursor: not-allowed;
+.toggle-btn.added {
+  background: #ccc;
+  color: #333;
+  cursor: default;
 }
 
+.toggle-btn:hover:not(.added) {
+  background-color: #000;
+  color: #fff;
+}
 
+.addbtntext {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* CTA Button */
 .cta-btn {
   display: flex;
   justify-content: space-between;
@@ -124,16 +127,7 @@ body {
   stroke: currentColor;
 }
 
-
-.cta-btn:disabled {
-  background: #aaa;
-  
-  cursor: not-allowed;
-}
-
-
-
-/* Stepper + Remove UI */
+/* Selected Sidebar Items */
 .selected-item {
   display: flex;
   align-items: center;
@@ -173,7 +167,6 @@ body {
   margin: 0 8px;
 }
 
-/* Remove button */
 .remove-btn {
   background: transparent;
   border: none;
@@ -182,16 +175,7 @@ body {
   font-size: 18px;
 }
 
-/* Button animation */
-.toggle-btn {
-  transition: all 0.3s ease;
-}
-
-.toggle-btn:active {
-  transform: scale(0.95);
-}
-
-/* Fade animation */
+/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -204,10 +188,9 @@ body {
   }
 }
 
-
+/* Progress bar */
 .progress-container {
   margin: 1rem 0;
-  
 }
 
 .progress-bar {
@@ -225,24 +208,21 @@ body {
   background-color: #000;
   transition: width 0.3s ease;
 }
-/* ===== Responsive Layout for Mobile ===== */
+
+/* Responsive */
 @media (max-width: 768px) {
   .bundle-builder {
     flex-direction: column;
   }
 
   .product-grid {
-    grid-template-columns: 1fr; /* stack vertically */
+    grid-template-columns: 1fr;
   }
 
   .bundle-sidebar {
     width: 100%;
-    position: static; /* remove sticky on small screens */
+    position: static;
     margin-top: 2rem;
     border-top: 1px solid #ddd;
   }
-}
-.bundle-sidebar {
-  position: sticky;
-  top: 1rem;
 }

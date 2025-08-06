@@ -1,56 +1,50 @@
 const products = [
-    { id: 1, name: 'Tie-Dye Lounge Set', price: 150, image: 'assets/1.jpg' },
-    { id: 2, name: 'Sunburst Tracksuit', price: 150, image: 'assets/2.jpg' },
-    { id: 3, name: 'Retro Red Streetwear', price: 150, image: 'assets/3.jpg' },
-    { id: 4, name: 'Urban Sportwear Combo', price: 150, image: 'assets/4.jpg' },
-    { id: 5, name: 'Oversized Knit & Coat', price: 150, image: 'assets/5.jpg' },
-    { id: 6, name: 'Chic Monochrome Blazer', price: 150, image: 'assets/6.jpg' },
+  { id: 1, name: 'Tie-Dye Lounge Set', price: 150, image: 'assets/1.jpg' },
+  { id: 2, name: 'Sunburst Tracksuit', price: 150, image: 'assets/2.jpg' },
+  { id: 3, name: 'Retro Red Streetwear', price: 150, image: 'assets/3.jpg' },
+  { id: 4, name: 'Urban Sportwear Combo', price: 150, image: 'assets/4.jpg' },
+  { id: 5, name: 'Oversized Knit & Coat', price: 150, image: 'assets/5.jpg' },
+  { id: 6, name: 'Chic Monochrome Blazer', price: 150, image: 'assets/6.jpg' }
 ];
 
-
-
-// Change value to: Map<id, {product, quantity}>
 const selected = new Map();
 
 function renderProducts() {
-    const grid = document.querySelector('.product-grid');
-    grid.innerHTML = '';
-    products.forEach((product) => {
-        const isAdded = selected.has(product.id);
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
+  const grid = document.querySelector('.product-grid');
+  grid.innerHTML = '';
+  products.forEach((product) => {
+    const isAdded = selected.has(product.id);
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
       <img src="${product.image}" alt="${product.name}" />
       <h3>${product.name}</h3>
       <p class="price-text">$${product.price.toFixed(2)}</p>
       <button class="toggle-btn ${isAdded ? 'added' : ''}" data-id="${product.id}">
-      <div class="addbtntext">
-      <span class="label">${isAdded ? 'Added to Bundle' : 'Add to Bundle'}</span>
-      <span class="icon">${isAdded ? '✓' : '+'}</span>
-      </div>
+        <div class="addbtntext">
+          <span class="label">${isAdded ? 'Added to Bundle' : 'Add to Bundle'}</span>
+          <span class="icon">${isAdded ? '✓' : '+'}</span>
+        </div>
       </button>
-
     `;
-        grid.appendChild(card);
-    });
+    grid.appendChild(card);
+  });
 }
 
 function updateSidebar() {
-    const container = document.getElementById('selected-products');
-    const subtotalText = document.getElementById('subtotal');
-    const discountText = document.getElementById('discount');
+  const container = document.getElementById('selected-products');
+  const subtotalText = document.getElementById('subtotal');
+  const discountText = document.getElementById('discount');
+  const ctaBtn = document.getElementById('add-to-cart');
 
-    const ctaBtn = document.getElementById('add-to-cart');
+  container.innerHTML = '';
+  let subtotal = 0;
 
-    container.innerHTML = '';
-    let subtotal = 0;
-
-    selected.forEach(({ product, quantity }) => {
-        subtotal += product.price * quantity;
-
-        const item = document.createElement('div');
-        item.className = 'selected-item';
-        item.innerHTML = `
+  selected.forEach(({ product, quantity }) => {
+    subtotal += product.price * quantity;
+    const item = document.createElement('div');
+    item.className = 'selected-item';
+    item.innerHTML = `
       <img src="${product.image}" />
       <div class="selected-info">
         <span>${product.name}</span>
@@ -62,35 +56,31 @@ function updateSidebar() {
       </div>
       <button class="remove-btn" data-id="${product.id}">&times;</button>
     `;
-        container.appendChild(item);
-    });
+    container.appendChild(item);
+  });
 
-    const discount = selected.size >= 3 ? subtotal * 0.3 : 0;
-    const finalTotal = subtotal - discount;
+  const discount = selected.size >= 3 ? subtotal * 0.3 : 0;
+  const finalTotal = subtotal - discount;
 
+  const fill = document.getElementById('progress-fill');
+  fill.style.width = `${Math.min(selected.size / 3, 1) * 100}%`;
 
-    const fill = document.getElementById('progress-fill');
-    let progressPercent = Math.min(selected.size / 3, 1) * 100;
-    fill.style.width = `${progressPercent}%`;
+  discountText.textContent = `-$${discount.toFixed(2)}`;
+  subtotalText.textContent = `$${finalTotal.toFixed(2)}`;
 
-    discountText.textContent = `-$${discount.toFixed(2)}`;
-    subtotalText.textContent = `$${finalTotal.toFixed(2)}`;
-    if (selected.size < 3) {
-        ctaBtn.disabled = true;
-        ctaBtn.querySelector('.btn-text').textContent = `Add ${3 - selected.size} item${3 - selected.size > 1 ? 's' : ''} to proceed`;
-    } else {
-        ctaBtn.disabled = false;
-        ctaBtn.querySelector('.btn-text').textContent = 'Add Bundle to Cart';
-
-    }
-
+  if (selected.size < 3) {
+    ctaBtn.disabled = true;
+    ctaBtn.querySelector('.btn-text').textContent = `Add ${3 - selected.size} item${3 - selected.size > 1 ? 's' : ''} to proceed`;
+  } else {
+    ctaBtn.disabled = false;
+    ctaBtn.querySelector('.btn-text').textContent = 'Add Bundle to Cart';
+  }
 }
 
 document.addEventListener('click', (e) => {
   const toggleBtn = e.target.closest('.toggle-btn');
   const removeBtn = e.target.closest('.remove-btn');
 
-  // Add/remove product
   if (toggleBtn && toggleBtn.dataset.id) {
     const id = Number(toggleBtn.dataset.id);
     const product = products.find(p => p.id === id);
@@ -103,7 +93,6 @@ document.addEventListener('click', (e) => {
     updateSidebar();
   }
 
-  // Remove from sidebar
   if (removeBtn && removeBtn.dataset.id) {
     const id = Number(removeBtn.dataset.id);
     selected.delete(id);
@@ -111,7 +100,6 @@ document.addEventListener('click', (e) => {
     updateSidebar();
   }
 
-  // Quantity stepper logic
   if (e.target.classList.contains('increase') || e.target.classList.contains('decrease')) {
     const stepId = Number(e.target.closest('.stepper').dataset.id);
     const item = selected.get(stepId);
@@ -126,14 +114,11 @@ document.addEventListener('click', (e) => {
     updateSidebar();
   }
 
-  // CTA click
   if (e.target.id === 'add-to-cart') {
     console.log('Bundle:', Array.from(selected.entries()));
     alert('Bundle logged to console!');
   }
 });
 
-
 renderProducts();
 updateSidebar();
-

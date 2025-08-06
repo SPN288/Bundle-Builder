@@ -2,58 +2,52 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bundle Builder</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bundle Builder</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <h1 class="title">Buy 3 and Save 30%</h1>
+  <h1 class="title">Buy 3 and Save 30%</h1>
 
-    <main class="bundle-builder">
-        
-        <section class="product-grid">
-            
-        </section>
+  <main class="bundle-builder">
+    <section class="product-grid"></section>
 
-        
-        <aside class="bundle-sidebar">
-            <h2>Create a Bundle</h2>
-            <div class="progress-container">
-                <p class="progress-text"><span id="bundle-count">Add at <b>least 3</b> items and <b>Save 30%</b></p>
-                </span></p>
-                <div class="progress-bar">
-                    <div id="progress-fill"></div>
-                </div>
-            </div>
+    <aside class="bundle-sidebar">
+      <h2>Create a Bundle</h2>
+      <div class="progress-container">
+        <p class="progress-text">
+          <span id="bundle-count">Add at <b>least 3</b> items and <b>Save 30%</b></span>
+        </p>
+        <div class="progress-bar">
+          <div id="progress-fill"></div>
+        </div>
+      </div>
 
-            <div class="selected-products" id="selected-products">
-                
-            </div>
-            <div class="d-container">
+      <div class="selected-products" id="selected-products"></div>
 
-                <div class="summary">
-                    <hr>
-                    <p class="price-text addbtntext"><span>Discount</span> <span id="discount">$0.00</span></p>
-                    <hr>
-                    <p class="addbtntext"><span>Subtotal</span><span id="subtotal">$0.00</span></p>
-                </div>
-                <button id="add-to-cart" class="cta-btn" disabled>
-                    <div class="btn-text">Add Bundle to Cart</div>
-                    <div class="btn-icon">
-                        <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 4l6 4-6 4" stroke="currentColor" stroke-width="2" fill="none" />
-                        </svg>
-                    </div>
-                </button>
-            </div>
+      <div class="d-container">
+        <div class="summary">
+          <hr />
+          <p class="price-text addbtntext"><span>Discount</span> <span id="discount">$0.00</span></p>
+          <hr />
+          <p class="addbtntext"><span>Subtotal</span><span id="subtotal">$0.00</span></p>
+        </div>
+        <button id="add-to-cart" class="cta-btn" disabled>
+          <div class="btn-text">Add Bundle to Cart</div>
+          <div class="btn-icon">
+            <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4l6 4-6 4" stroke="currentColor" stroke-width="2" fill="none" />
+            </svg>
+          </div>
+        </button>
+      </div>
+    </aside>
+  </main>
 
-        </aside>
-    </main>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
