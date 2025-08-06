@@ -75,58 +75,64 @@ function updateSidebar() {
 
     discountText.textContent = `-$${discount.toFixed(2)}`;
     subtotalText.textContent = `$${finalTotal.toFixed(2)}`;
-    ctaBtn.disabled = selected.size < 3;
+    if (selected.size < 3) {
+        ctaBtn.disabled = true;
+        ctaBtn.querySelector('.btn-text').textContent = `Add ${3 - selected.size} item${3 - selected.size > 1 ? 's' : ''} to proceed`;
+    } else {
+        ctaBtn.disabled = false;
+        ctaBtn.querySelector('.btn-text').textContent = 'Add Bundle to Cart';
+
+    }
+
 }
 
 document.addEventListener('click', (e) => {
-    const id = Number(e.target.dataset.id);
+  const toggleBtn = e.target.closest('.toggle-btn');
+  const removeBtn = e.target.closest('.remove-btn');
 
-    // Toggle Product Selection
-    if (e.target.classList.contains('toggle-btn')) {
-        const product = products.find(p => p.id === id);
-        if (selected.has(id)) {
-            selected.delete(id);
-        } else {
-            selected.set(id, { product, quantity: 1 });
-        }
-        renderProducts();
-        updateSidebar();
+  // Add/remove product
+  if (toggleBtn && toggleBtn.dataset.id) {
+    const id = Number(toggleBtn.dataset.id);
+    const product = products.find(p => p.id === id);
+    if (selected.has(id)) {
+      selected.delete(id);
+    } else {
+      selected.set(id, { product, quantity: 1 });
     }
+    renderProducts();
+    updateSidebar();
+  }
 
-    // Remove item
-    if (e.target.classList.contains('remove-btn')) {
-        selected.delete(id);
-        renderProducts();
-        updateSidebar();
+  // Remove from sidebar
+  if (removeBtn && removeBtn.dataset.id) {
+    const id = Number(removeBtn.dataset.id);
+    selected.delete(id);
+    renderProducts();
+    updateSidebar();
+  }
+
+  // Quantity stepper logic
+  if (e.target.classList.contains('increase') || e.target.classList.contains('decrease')) {
+    const stepId = Number(e.target.closest('.stepper').dataset.id);
+    const item = selected.get(stepId);
+    if (!item) return;
+
+    if (e.target.classList.contains('increase')) {
+      item.quantity++;
+    } else if (item.quantity > 1) {
+      item.quantity--;
     }
+    selected.set(stepId, item);
+    updateSidebar();
+  }
 
-    // Quantity Stepper
-    if (e.target.classList.contains('increase') || e.target.classList.contains('decrease')) {
-        const stepId = Number(e.target.parentElement.dataset.id);
-        const item = selected.get(stepId);
-        if (!item) return;
-
-        if (e.target.classList.contains('increase')) {
-            item.quantity++;
-        } else if (item.quantity > 1) {
-            item.quantity--;
-        }
-        selected.set(stepId, item);
-        updateSidebar();
-    }
-
-    // Log on CTA click
-    if (e.target.id === 'add-to-cart') {
-        console.log('Bundle:', Array.from(selected.entries()).map(([id, { product, quantity }]) => ({
-            id,
-            name: product.name,
-            price: product.price,
-            quantity,
-            total: product.price * quantity
-        })));
-        alert('Bundle logged to console!');
-    }
+  // CTA click
+  if (e.target.id === 'add-to-cart') {
+    console.log('Bundle:', Array.from(selected.entries()));
+    alert('Bundle logged to console!');
+  }
 });
+
 
 renderProducts();
 updateSidebar();

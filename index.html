@@ -22,7 +22,8 @@
         <aside class="bundle-sidebar">
             <h2>Create a Bundle</h2>
             <div class="progress-container">
-                <p class="progress-text"><span id="bundle-count">Add at <b>least 3</b> items and <b>Save 30%</b></p></span></p>
+                <p class="progress-text"><span id="bundle-count">Add at <b>least 3</b> items and <b>Save 30%</b></p>
+                </span></p>
                 <div class="progress-bar">
                     <div id="progress-fill"></div>
                 </div>
@@ -35,7 +36,15 @@
                 <p class="price-text addbtntext"><span>Discount</span> <span id="discount">$0.00</span></p>
                 <p class="addbtntext"><span>Subtotal</span><span id="subtotal">$0.00</span></p>
             </div>
-            <button id="add-to-cart" class="cta-btn" disabled>Add Bundle to Cart</button>
+            <button id="add-to-cart" class="cta-btn" disabled>
+                <div class="btn-text">Add Bundle to Cart</div>
+                <div class="btn-icon">
+                    <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 4l6 4-6 4" stroke="currentColor" stroke-width="2" fill="none" />
+                    </svg>
+                </div>
+            </button>
+
         </aside>
     </main>
 
